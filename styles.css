@@ -1,0 +1,369 @@
+
+/*
+  LibrarySystem Web Version Stylesheet
+
+  This file controls:
+  1. Global layout
+  2. Shared components
+  3. Form, table, button, and modal styles
+  4. Responsive behavior
+*/
+
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #d7dde6;
+  --border-dark: #b8c0cc;
+  --shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+  --danger: #b91c1c;
+  --success: #166534;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button { cursor: pointer; }
+.hidden { display: none !important; }
+
+/* Shared full-page layout */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top navigation bar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px 10px;
+}
+
+.topbar-left,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Main page content container */
+.page-body {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 16px 0 40px;
+}
+
+/* Shared page title */
+.page-title {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  margin: 24px 0 32px;
+}
+
+/* Large button area used on landing page and user home page */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 320px));
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+.big-card-btn {
+  min-height: 240px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 20px;
+  font-size: 32px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+.big-card-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Shared card block */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* Authentication panel */
+.auth-card {
+  width: min(420px, 100%);
+  margin: 0 auto;
+  padding: 26px 28px;
+}
+
+/* Register / login tab row */
+.tab-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.tab-btn {
+  padding: 12px 14px;
+  background: #eef2f7;
+  border: 0;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.tab-btn.active { background: var(--card); }
+
+/* Form blocks */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.form-row label { font-weight: 700; }
+
+.input,
+.select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px 12px;
+}
+
+.radio-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-height: 42px;
+}
+
+/* Shared buttons */
+.btn {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-dark);
+  background: #fff;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.btn:hover { background: #f8fafc; }
+
+.btn.primary { min-width: 120px; }
+
+.center-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* Search controls */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Shared table wrapper */
+.table-wrap {
+  overflow: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #edf1f5;
+  text-align: left;
+}
+
+th {
+  background: #fbfcfe;
+  font-weight: 800;
+}
+
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #f8fafc; }
+tbody tr.no-click { cursor: default; }
+
+/* Book detail information blocks */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.info-item {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.action-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 10px 0 18px;
+}
+
+.borrow-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Status badge styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  background: #eef2f7;
+}
+
+.badge.available { color: var(--success); }
+.badge.borrowed { color: #92400e; }
+.badge.removed { color: var(--danger); }
+.badge.overdue { color: var(--danger); }
+.badge.returned { color: #334155; }
+.badge.borrowing { color: #1d4ed8; }
+
+/* Modal dialog for borrowing history */
+.modal {
+  border: 0;
+  padding: 0;
+  border-radius: 18px;
+  width: min(720px, calc(100% - 24px));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.modal::backdrop {
+  background: rgba(15, 23, 42, 0.36);
+}
+
+.modal-content { padding: 18px 20px 20px; }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 55vh;
+  overflow: auto;
+}
+
+.history-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+}
+
+/* Message box shown after successful or failed operations */
+.message {
+  width: min(720px, calc(100% - 32px));
+  margin: 0 auto 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+/* Responsive layout for tablets and phones */
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .topbar { padding-inline: 14px; }
+  .page-body { width: min(100%, calc(100% - 20px)); }
+}
+/* Admin extension */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.stat-card {
+  padding: 18px;
+  text-align: center;
+}
+.stat-number {
+  font-size: 30px;
+  font-weight: 900;
+  margin-top: 8px;
+}
+.admin-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.small-text {
+  color: var(--muted);
+  font-size: 14px;
+}
+.text-danger { color: var(--danger); font-weight: 800; }
+.text-success { color: var(--success); font-weight: 800; }
+@media (max-width: 768px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
