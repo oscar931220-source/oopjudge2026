@@ -30,7 +30,8 @@ public class Circle extends Shape {
      */
     public double getArea() {
         double radius = length / 2.0;
-        return roundToSecondDecimal(Math.PI * radius * radius);
+        double area = Math.PI * radius * radius;
+        return Math.round(area * 100.0) / 100.0;
     }
 
     /**
@@ -39,6 +40,7 @@ public class Circle extends Shape {
      * @return the perimeter of this circle
      */
     public double getPerimeter() {
-        return roundToSecondDecimal(Math.PI * length);
+        double perimeter = Math.PI * length;
+        return Math.round(perimeter * 100.0) / 100.0;
     }
 }
