@@ -27,7 +27,8 @@ public class Square extends Shape {
      * @return the area of this square
      */
     public double getArea() {
-        return roundToSecondDecimal(length * length);
+        double area = length * length;
+        return Math.round(area * 100.0) / 100.0;
     }
 
     /**
@@ -36,6 +37,7 @@ public class Square extends Shape {
      * @return the perimeter of this square
      */
     public double getPerimeter() {
-        return roundToSecondDecimal(4.0 * length);
+        double perimeter = 4.0 * length;
+        return Math.round(perimeter * 100.0) / 100.0;
     }
 }
