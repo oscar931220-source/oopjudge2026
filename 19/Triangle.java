@@ -27,7 +27,8 @@ public class Triangle extends Shape {
      * @return the area of this triangle
      */
     public double getArea() {
-        return roundToSecondDecimal(Math.sqrt(3) / 4.0 * length * length);
+        double area = Math.sqrt(3) / 4.0 * length * length;
+        return Math.round(area * 100.0) / 100.0;
     }
 
     /**
@@ -36,6 +37,7 @@ public class Triangle extends Shape {
      * @return the perimeter of this triangle
      */
     public double getPerimeter() {
-        return roundToSecondDecimal(3.0 * length);
+        double perimeter = 3.0 * length;
+        return Math.round(perimeter * 100.0) / 100.0;
     }
 }
